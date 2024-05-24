@@ -458,7 +458,7 @@ class TopNGating(Module):
         # optimal threshold was ~ 0.2
         # generalized to more than 2 experts
 
-        probs = torch.zeros_like(gates).uniform_(0., 1.)
+        probs = torch.rand_like(gates)
 
         threshold = rearrange(threshold, 'k -> k 1 1')
         should_route = probs < (gates / threshold.clamp(min = eps))
